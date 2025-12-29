@@ -33,6 +33,6 @@ jobs:
     - name: Install dependencies
       run: bundle install
 
-      # - name: Run SwiftLint via Fastlane
-      #   run: bundle exec fastlane swiftlint
+    - name: Run SwiftLint via Fastlane
+      run: bundle exec fastlane swiftlint
   

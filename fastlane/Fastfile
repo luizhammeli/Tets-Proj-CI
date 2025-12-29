@@ -1,0 +1,8 @@
+default_platform(:ios)
+
+lane :swiftlint do
+  swiftlint(
+    mode: :lint,        # ou :fix
+    strict: true        # falha o build se houver warning/error
+  )
+end
