@@ -8,10 +8,6 @@
 import XCTest
 
 final class TetsProjCIUITestsLaunchTests: XCTestCase {
-    override class var runsForEachTargetApplicationUIConfiguration: Bool {
-        true
-    }
-
     override func setUpWithError() throws {
         continueAfterFailure = false
     }
