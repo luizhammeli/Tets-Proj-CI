@@ -13,7 +13,7 @@ lane :ci_iOS do
       clean: true,
       scheme: "Tets-Proj-CI",
       sdk: "iphonesimulator",
-      xcargs: "-destination 'platform=iOS Simulator,name=iPhone 17,OS=26.0.1'"
+      devices: 'iPhone 17 Pro (26.0)'
 
   )
 end
