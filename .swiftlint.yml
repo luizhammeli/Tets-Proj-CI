@@ -1,6 +1,6 @@
 included:
-  - Sources
-  - Tests
+  - Tets-Proj-CI
+  - TetsProjCITests
 
 excluded:
   - Pods
