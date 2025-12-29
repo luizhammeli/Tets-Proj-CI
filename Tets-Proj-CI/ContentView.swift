@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -28,7 +27,6 @@ struct ContentView: View {
         let id = 1 + 1
         return "Luiz\(id)"
     }
-
 
     func test3() -> String {
         let id = 1 + 1
