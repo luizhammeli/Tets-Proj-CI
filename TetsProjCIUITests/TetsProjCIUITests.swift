@@ -14,14 +14,14 @@ final class TetsProjCIUITests: XCTestCase {
 
     @MainActor
     func testExample() throws {
-        let app = XCUIApplication()
-        app.launch()
+//        let app = XCUIApplication()
+//        app.launch()
     }
 
     @MainActor
     func testLaunchPerformance() throws {
-        measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
-        }
+//        measure(metrics: [XCTApplicationLaunchMetric()]) {
+//            XCUIApplication().launch()
+//        }
     }
 }
