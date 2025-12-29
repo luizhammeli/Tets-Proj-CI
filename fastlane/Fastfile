@@ -16,4 +16,10 @@ lane :ci_iOS do
       devices: 'iPhone 17 Pro (26.0)'
 
   )
+
+  xcov(
+    scheme: "Tets-Proj-CI",
+    output_directory: "xcov_output",
+    minimum_coverage_percentage: 50.0
+  )
 end
