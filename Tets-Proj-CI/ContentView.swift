@@ -17,21 +17,6 @@ struct ContentView: View {
         }
         .padding()
     }
-
-    func test() -> String {
-        let id = 1 + 1
-        return "Luiz\(id)"
-    }
-
-    func test2() -> String {
-        let id = 1 + 1
-        return "Luiz\(id)"
-    }
-
-    func test3() -> String {
-        let id = 1 + 1
-        return "Luiz\(id)"
-    }
 }
 
 #Preview {
