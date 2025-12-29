@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Tets_Proj_CIApp: App {
+struct TetsProjCIApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

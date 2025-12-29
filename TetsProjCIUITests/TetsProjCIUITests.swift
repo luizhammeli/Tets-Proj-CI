@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class Tets_Proj_CIUITests: XCTestCase {
+final class TetsProjCIUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
     }

@@ -35,14 +35,14 @@
 			path = "Tets-Proj-CI";
 			sourceTree = "<group>";
 		};
-		259E17472F02B0AC0037FABB /* Tets-Proj-CITests */ = {
+		259E17472F02B0AC0037FABB /* TetsProjCITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Tets-Proj-CITests";
+			path = TetsProjCITests;
 			sourceTree = "<group>";
 		};
-		259E17512F02B0AC0037FABB /* Tets-Proj-CIUITests */ = {
+		259E17512F02B0AC0037FABB /* TetsProjCIUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Tets-Proj-CIUITests";
+			path = TetsProjCIUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -76,8 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				259E17392F02B0AB0037FABB /* Tets-Proj-CI */,
-				259E17472F02B0AC0037FABB /* Tets-Proj-CITests */,
-				259E17512F02B0AC0037FABB /* Tets-Proj-CIUITests */,
+				259E17472F02B0AC0037FABB /* TetsProjCITests */,
+				259E17512F02B0AC0037FABB /* TetsProjCIUITests */,
 				259E17382F02B0AB0037FABB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -131,7 +131,7 @@
 				259E17462F02B0AC0037FABB /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				259E17472F02B0AC0037FABB /* Tets-Proj-CITests */,
+				259E17472F02B0AC0037FABB /* TetsProjCITests */,
 			);
 			name = "Tets-Proj-CITests";
 			packageProductDependencies = (
@@ -154,7 +154,7 @@
 				259E17502F02B0AC0037FABB /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				259E17512F02B0AC0037FABB /* Tets-Proj-CIUITests */,
+				259E17512F02B0AC0037FABB /* TetsProjCIUITests */,
 			);
 			name = "Tets-Proj-CIUITests";
 			packageProductDependencies = (

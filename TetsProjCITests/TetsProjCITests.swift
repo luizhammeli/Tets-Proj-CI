@@ -8,7 +8,7 @@
 import XCTest
 @testable import Tets_Proj_CI
 
-final class Tets_Proj_CITests: XCTestCase {
+final class TetsProjCITests: XCTestCase {
     func testPerformanceExample() throws {
     }
 }
