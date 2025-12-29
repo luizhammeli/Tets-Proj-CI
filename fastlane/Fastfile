@@ -9,7 +9,7 @@ end
 
 desc "Run Scheme Tets-Proj-CI"
 lane :ci_iOS do
-  bund_app(
+  scan(
       clean: true,
       scheme: "Tets-Proj-CI",
       sdk: "iphonesimulator",
