@@ -42,6 +42,6 @@ jobs:
     - name: Run SwiftLint via Fastlane
       run: bundle exec fastlane ci_lint
 
-    - name: Run Project
+    - name: Run Unit Tests
       run: bundle exec fastlane ci_iOS
   
