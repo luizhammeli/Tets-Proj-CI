@@ -27,8 +27,8 @@ jobs:
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
 
-      # - name: Install SwiftLint
-      #   run: brew install swiftlint
+    - name: Install SwiftLint
+      run: brew install swiftlint
 
     - name: Install dependencies
       run: bundle install
