@@ -6,3 +6,13 @@ lane :swiftlint do
     strict: true        # falha o build se houver warning/error
   )
 end
+
+desc "Run Scheme Tests-Proj-CI"
+lane :ci_iOS do
+  scan(
+      clean: true,
+      scheme: "Tests-Proj-CI",
+      sdk: "iphonesimulator",
+      destination: "platform=iOS Simulator,name=iPhone 17 Pro,OS=26.2"
+  )
+end
