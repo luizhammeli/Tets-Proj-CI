@@ -20,6 +20,6 @@ lane :ci_iOS do
   xcov(
     scheme: "Tets-Proj-CI",
     output_directory: "xcov_output",
-    minimum_coverage_percentage: 50.0
+    minimum_coverage_percentage: 80.0
   )
 end
