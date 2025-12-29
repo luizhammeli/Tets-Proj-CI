@@ -10,11 +10,9 @@ end
 desc "Run Scheme Tets-Proj-CI"
 lane :ci_iOS do
   bund_app(
-      project: "./Tets-Proj-CI.xcodeproj"
+      clean: true,
       scheme: "Tets-Proj-CI",
-      export_method: "development",
-      skip_codesigning: true,
-      skip_archive: true,
-      xcarchive: "CODE_SIGNING=NO CODE_SIGNING_REQUIRED=NO"
+      sdk: "iphonesimulator",
+      # destination: "platform=iOS Simulator,name=iPhone 17 Pro,OS=26.0"
   )
 end
