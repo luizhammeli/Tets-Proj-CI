@@ -6,3 +6,7 @@ excluded:
   - Pods
   - .build
   - DerivedData
+  - .git
+  - fastlane
+  - vendor
+  - vendor/**
