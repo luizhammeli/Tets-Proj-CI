@@ -11,7 +11,7 @@ desc "Run Scheme Tets-Proj-CI"
 lane :ci_iOS do
   scan(
       clean: true,
-      scheme: "Tets-Proj-CI.",
+      scheme: "Tets-Proj-CI",
       sdk: "iphonesimulator",
       destination: "platform=iOS Simulator,name=iPhone 17 Pro,OS=26.2"
   )
