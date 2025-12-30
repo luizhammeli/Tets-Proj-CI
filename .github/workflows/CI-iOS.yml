@@ -59,4 +59,7 @@ jobs:
       run: bundle exec danger
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Debug xcov output
+      run: ls -R xcov_output
   

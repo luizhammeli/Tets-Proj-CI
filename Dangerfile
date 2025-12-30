@@ -1,6 +1,6 @@
 require 'json'
 
-report_path = "xcov_output/tmp/report.json"
+report_path = "xcov_output/report.json"
 
 if File.exist?(report_path)
   report = JSON.parse(File.read(report_path))
