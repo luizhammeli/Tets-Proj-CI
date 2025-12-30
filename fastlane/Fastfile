@@ -22,4 +22,7 @@ lane :ci_iOS do
     output_directory: "xcov_output",
     minimum_coverage_percentage: 80.0
   )
+  coverage = xcov.overall_coverage
+  UI.message("📈 Coverage total: #{coverage}%")
+  ENV["XCOV_COVERAGE"] = coverage.to_s
 end
