@@ -23,6 +23,14 @@ lane :ci_iOS do
     minimum_coverage_percentage: 80.0
   )
 
+  report = xcov.produce_report(
+  scheme: "Tets-Proj-CI",
+  output_directory: "xcov_output",
+  minimum_coverage_percentage: 80
+  )
+
+  xcov.output_report(report)
+
   coverage = result[:overall_coverage]
   UI.message("📈 Coverage total: #{coverage}%")
   
