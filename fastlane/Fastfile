@@ -17,12 +17,14 @@ lane :ci_iOS do
 
   )
 
-  xcov(
+  result = xcov(
     scheme: "Tets-Proj-CI",
     output_directory: "xcov_output",
     minimum_coverage_percentage: 80.0
   )
-  coverage = xcov.overall_coverage
+
+  coverage = result[:overall_coverage]
   UI.message("📈 Coverage total: #{coverage}%")
+  
   ENV["XCOV_COVERAGE"] = coverage.to_s
 end
