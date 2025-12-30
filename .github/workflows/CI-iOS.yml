@@ -29,6 +29,7 @@ jobs:
       run: |
         echo "Repo: $GITHUB_REPOSITORY"
         echo "Actor: $GITHUB_ACTOR"
+        echo "Event: $GITHUB_EVENT_NAME"
 
     - name: Select Xcode
       run: sudo xcode-select -switch /Applications/Xcode_26.0.1.app
