@@ -44,4 +44,9 @@ jobs:
 
     - name: Run Unit Tests
       run: bundle exec fastlane ci_iOS
+
+    - name: Run Danger
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: bundle exec danger
   
