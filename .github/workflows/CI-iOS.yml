@@ -2,6 +2,10 @@ name: CI-iOS
 
 # Controls when the action will run. 
 # Triggers the workflow on push events but only for the master branch.
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
 on:
   push:
     branches: [ main ]
@@ -20,6 +24,12 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v4
+
+    - name: Debug token
+      run: |
+        echo "Repo: $GITHUB_REPOSITORY"
+        echo "Actor: $GITHUB_ACTOR"
+        echo "Event: $GITHUB_EVENT_NAME"
 
     - name: Select Xcode
       run: sudo xcode-select -switch /Applications/Xcode_26.0.1.app
@@ -44,4 +54,12 @@ jobs:
 
     - name: Run Unit Tests
       run: bundle exec fastlane ci_iOS
+
+    - name: Run Danger
+      run: bundle exec danger
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Debug xcov output
+      run: ls -R xcov_output
   
