@@ -19,37 +19,36 @@ struct CarouselView: View {
     @State private var currentIndex = 0
 
     var body: some View {
-<<<<<<< Updated upstream
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
-=======
-        TabView(selection: $currentIndex) {
-            ForEach(Array(items.enumerated()), id: \.element.id) { index, item in
-                ZStack {
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(item.color)
-                    VStack {
-                        if !item.systemImage.isEmpty {
-                            Image(systemName: item.systemImage)
-                                .font(.system(size: 48))
+            TabView(selection: $currentIndex) {
+                ForEach(Array(items.enumerated()), id: \.element.id) { index, item in
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(item.color)
+                        VStack {
+                            if !item.systemImage.isEmpty {
+                                Image(systemName: item.systemImage)
+                                    .font(.system(size: 48))
+                                    .foregroundColor(.white)
+                                    .padding(.bottom, 8)
+                            }
+                            Text(item.title)
+                                .font(.headline)
                                 .foregroundColor(.white)
-                                .padding(.bottom, 8)
                         }
-                        Text(item.title)
-                            .font(.headline)
-                            .foregroundColor(.white)
+                        .padding()
                     }
-                    .padding()
+                    .padding(.horizontal, 16)
+                    .tag(index)
                 }
-                .padding(.horizontal, 16)
-                .tag(index)
             }
+            .tabViewStyle(.page(indexDisplayMode: .automatic))
+            .frame(height: 220)
         }
-        .tabViewStyle(.page(indexDisplayMode: .automatic))
-        .frame(height: 220)
     }
 }
 
@@ -71,7 +70,6 @@ struct ContentView: View {
                     .foregroundStyle(.tint)
                 Text("Hello, world")
             }
->>>>>>> Stashed changes
         }
         .padding()
     }
