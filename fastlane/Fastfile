@@ -13,8 +13,7 @@ lane :ci_iOS do
       clean: true,
       scheme: "Tets-Proj-CI",
       sdk: "iphonesimulator",
-      device: 'iPhone 17 Pro (26.0)'
-
+      device: 'iPhone 16 Pro (18.5)'
   )
 
   xcov(
