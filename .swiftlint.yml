@@ -1,7 +1,6 @@
 included:
   - Tets-Proj-CI
   - TetsProjCITests
-
 excluded:
   - Pods
   - .build
