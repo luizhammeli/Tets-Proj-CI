@@ -1,0 +1,21 @@
+name: Release
+
+# Controls when the action will run. 
+# Triggers the workflow on push events but only for the master branch.
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+on:
+  push:
+    branches: [ main ]
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Generate Release and Tag
+      run: ../generate-release-tag.sh minor
+  
