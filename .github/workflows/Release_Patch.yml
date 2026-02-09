@@ -1,0 +1,24 @@
+name: Release Patch
+
+permissions:
+  contents: write 
+on:
+  workflow_run:
+  push:
+    branches: 
+      - release/*
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 
+    - name: Generate Patch Release and Tag
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: | 
+        chmod +x ./generate-release-tag.sh 
+        ./generate-release-tag.sh patch
+  
