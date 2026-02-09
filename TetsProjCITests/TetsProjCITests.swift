@@ -9,8 +9,6 @@ import XCTest
 @testable import Tets_Proj_CI
 
 final class TetsProjCITests: XCTestCase {
-    func testPerformanceExample() throws {
-//        _ = ContentView()
-//        _ = TetsProjCIApp().body
+    func testPerformanceExample() {
     }
 }
