@@ -9,6 +9,5 @@ import XCTest
 @testable import Tets_Proj_CI
 
 final class TetsProjCITests: XCTestCase {
-    func testPerformanceExample() {
-    }
+    func testPerformanceExample() {}
 }
