@@ -46,8 +46,9 @@ gh release create "$NEW_TAG" \
   --title "$NEW_TAG" \
   --notes-file RELEASE_NOTES.md
 
+if [ "$TYPE" != "patch" ] && [ -n "$NEW_TAG" ]; then
 git push origin main:"release/$NEW_TAG"
-
 echo "Release Branch Criado"
+fi
 
 echo "✅ Release $NEW_TAG criado com sucesso"
