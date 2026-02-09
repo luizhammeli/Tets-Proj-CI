@@ -36,14 +36,18 @@ git push origin "$NEW_TAG"
 
 echo "Gerando release notes..."
 if [ -z "$LAST_TAG" ]; then
-  git log --pretty=format:"- %s (%h)" > RELEASE_NOTES.md
+  git log --pretty=format:"%h - %an <%ae> - %s" > RELEASE_NOTES.md
 else
-  git log "$LAST_TAG..HEAD" --pretty=format:"- %s (%h)" > RELEASE_NOTES.md
+  git log "$LAST_TAG..HEAD" --pretty=format:"%h - %an <%ae> - %s" > RELEASE_NOTES.md
 fi
 
 echo "Criando GitHub Release..."
 gh release create "$NEW_TAG" \
   --title "$NEW_TAG" \
   --notes-file RELEASE_NOTES.md
+
+gh branch create "release/$NEW_TAG" --source main --push
+
+echo "Release Branch Criado"
 
 echo "✅ Release $NEW_TAG criado com sucesso"
