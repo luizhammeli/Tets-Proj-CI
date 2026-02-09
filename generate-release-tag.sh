@@ -46,7 +46,7 @@ gh release create "$NEW_TAG" \
   --title "$NEW_TAG" \
   --notes-file RELEASE_NOTES.md
 
-gh branch create "release/$NEW_TAG" --source main --push
+git push origin main:"release/$NEW_TAG"
 
 echo "Release Branch Criado"
 
