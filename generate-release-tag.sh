@@ -35,6 +35,13 @@ git rev-parse "v$NEW_TAG" >/dev/null 2>&1 && {
   exit 0
 }
 
+if [ "$TYPE" != "patch" ] && [ -n "$NEW_TAG" ]; then
+NEW_RELEASE="v$MAJOR.$MINOR"
+echo "Release Branch"
+git push origin main:"release/$NEW_RELEASE"
+echo "Release Branch Criado"
+fi
+
 echo "Criando tag $NEW_TAG"
 git tag "$NEW_TAG"
 git push origin "$NEW_TAG"
@@ -51,10 +58,6 @@ gh release create "$NEW_TAG" \
   --title "$NEW_TAG" \
   --notes-file RELEASE_NOTES.md
 
-if [ "$TYPE" != "patch" ] && [ -n "$NEW_TAG" ]; then
-echo "Release Branch"
-git push origin main:"release/$NEW_TAG"
-echo "Release Branch Criado"
-fi
+
 
 echo "✅ Release $NEW_TAG criado com sucesso"
