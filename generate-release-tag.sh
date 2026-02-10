@@ -30,6 +30,11 @@ esac
 
 NEW_TAG="v$MAJOR.$MINOR.$PATCH"
 
+git rev-parse "v$NEW_TAG" >/dev/null 2>&1 && {
+  echo "Tag já existe, saindo..."
+  exit 0
+}
+
 echo "Criando tag $NEW_TAG"
 git tag "$NEW_TAG"
 git push origin "$NEW_TAG"
