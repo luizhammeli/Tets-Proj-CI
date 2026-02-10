@@ -21,4 +21,4 @@ jobs:
       run: | 
         chmod +x ./generate-release-tag.sh 
         ./generate-release-tag.sh patch
-  
+
