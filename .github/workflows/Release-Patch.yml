@@ -1,4 +1,4 @@
-name: Release Patch
+name: Release-Patch
 
 permissions:
   contents: write 
@@ -8,7 +8,7 @@ on:
     branches: 
       - release/*
 jobs:
-  release:
+  release-patch:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
