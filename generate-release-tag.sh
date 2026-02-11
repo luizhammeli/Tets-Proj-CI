@@ -31,7 +31,7 @@ esac
 NEW_TAG="v$MAJOR.$MINOR.$PATCH"
 
 git rev-parse "v$NEW_TAG" >/dev/null 2>&1 && {
-  echo "Tag já existe, saindo..."
+  echo "Tag already exists, exiting..."
   exit 0
 }
 
@@ -39,25 +39,23 @@ if [ "$TYPE" != "patch" ] && [ -n "$NEW_TAG" ]; then
 NEW_RELEASE="v$MAJOR.$MINOR"
 echo "Release Branch"
 git push origin main:"release/$NEW_RELEASE"
-echo "Release Branch Criado"
+echo "✅ Release Branch $NEW_RELEASE created successfully"
 fi
 
-echo "Criando tag $NEW_TAG"
+echo "Creating tag $NEW_TAG"
 git tag "$NEW_TAG"
 git push origin "$NEW_TAG"
 
-echo "Gerando release notes..."
+echo "Generating release notes..."
 if [ -z "$LAST_TAG" ]; then
   git log --pretty=format:"%h - %an <%ae> - %s" > RELEASE_NOTES.md
 else
   git log "$LAST_TAG..HEAD" --pretty=format:"%h - %an <%ae> - %s" > RELEASE_NOTES.md
 fi
 
-echo "Criando GitHub Release..."
+echo "Creating GitHub Release..."
 gh release create "$NEW_TAG" \
   --title "$NEW_TAG" \
   --notes-file RELEASE_NOTES.md
 
-
-
-echo "✅ Release $NEW_TAG criado com sucesso"
+echo "✅ Tag $NEW_TAG created successfully"
