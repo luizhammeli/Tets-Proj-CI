@@ -4,7 +4,7 @@ permissions:
   contents: write 
 on:
   workflow_run:
-    workflows: [ "CI-iOS" ]
+    workflows: [ "Build-Test" ]
     types:
       - completed
   push:
