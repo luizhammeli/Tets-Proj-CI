@@ -22,10 +22,6 @@ lane :ci_iOS do
   test_bundle = Dir["#{derived_data}/Build/Products/Debug-iphonesimulator/*.xctest"].first
   test_binary = Dir["#{test_bundle}/*"].find { |f| File.executable?(f) }
  sh("""
-  xcrun llvm-cov export \
-  -format=lcov \
-  -instr-profile "#{profdata}" \
-  "#{test_binary}" \
-  > coverage.lcov
+ xcrun llvm-cov export -format=lcov -instr-profile '#{profdata}' '#{test_binary}' > coverage.lcov
 """)
 end
