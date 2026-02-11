@@ -22,10 +22,6 @@ lane :ci_iOS do
   profdata = Dir["#{derived_data}/Build/ProfileData/*/*.profdata"].first
 
   sh("""
-    xcrun llvm-cov export \
-    -format=lcov \
-    -instr-profile "#{profdata}" \
-    "#{app_path}/#{binary_name}" \
-    > coverage.lcov
-  """)
+    xcrun llvm-cov export -format=lcov -instr-profile \"#{profdata}\" \"#{app_path}/#{binary_name}\" > coverage.lcov
+    """)
 end
