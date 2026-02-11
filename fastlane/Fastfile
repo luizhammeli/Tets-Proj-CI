@@ -12,12 +12,20 @@ lane :ci_iOS do
   scan(
       clean: true,
       scheme: "Tets-Proj-CI",
-      sdk: "iphonesimulator"
+      sdk: "iphonesimulator",
+      code_coverage: true,
+      result_bundle: true
   )
+  derived_data = lane_context[SharedValues::SCAN_DERIVED_DATA_PATH]
+  app_path = Dir["#{derived_data}/Build/Products/Debug-iphonesimulator/*.app"].first
+  binary_name = File.basename(app_path, ".app")
+  profdata = Dir["#{derived_data}/Build/ProfileData/*/*.profdata"].first
 
-  xcov(
-    scheme: "Tets-Proj-CI",
-    output_directory: "xcov_output",
-    minimum_coverage_percentage: 80.0
-  )
+  sh("""
+    xcrun llvm-cov export \
+    -format=lcov \
+    -instr-profile "#{profdata}" \
+    "#{app_path}/#{binary_name}" \
+    > coverage.lcov
+  """)
 end
