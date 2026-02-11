@@ -18,10 +18,14 @@ lane :ci_iOS do
   )
   derived_data = lane_context[SharedValues::SCAN_DERIVED_DATA_PATH]
   sh("ls -R #{derived_data}/Build/ProfileData || true")
-  app_path = Dir["#{derived_data}/Build/Products/Debug-iphonesimulator/*.app"].first
-  binary_name = File.basename(app_path, ".app")
   profdata = Dir["#{derived_data}/Build/ProfileData/*/*.profdata"].first
-  sh("""
-    xcrun llvm-cov export -format=lcov -instr-profile \"#{profdata}\" \"#{app_path}/#{binary_name}\" > coverage.lcov
-    """)
+  test_bundle = Dir["#{derived_data}/Build/Products/Debug-iphonesimulator/*.xctest"].first
+  test_binary = Dir["#{test_bundle}/*"].find { |f| File.executable?(f) }
+ sh("""
+  xcrun llvm-cov export \
+  -format=lcov \
+  -instr-profile "#{profdata}" \
+  "#{test_binary}" \
+  > coverage.lcov
+""")
 end
