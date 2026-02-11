@@ -20,10 +20,11 @@ lane :ci_iOS do
   derived_data = lane_context[SharedValues::SCAN_DERIVED_DATA_PATH]
   sh("ls -R #{derived_data}/Build/ProfileData || true")
   sh("ls -R #{derived_data}/Build/Products || true")
+  
   profdata = Dir["#{derived_data}/Build/ProfileData/*/*.profdata"].first
   UI.user_error!("profdata not found") unless profdata
 
-  test_bundle = Dir["#{derived_data}/Build/Products/Debug-iphonesimulator/*.xctest"].first
+  test_bundle = Dir["#{derived_data}/Build/Products/**/*.xctest"].first
   UI.user_error!("test bundle not found") unless test_bundle
 
   test_binary = File.join(
