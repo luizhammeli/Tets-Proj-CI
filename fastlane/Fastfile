@@ -33,5 +33,6 @@ lane :ci_iOS do
 )
 
 UI.user_error!("test binary not found") unless File.exist?(test_binary)
-sh("xcrun llvm-cov export -format=lcov -instr-profile '#{profdata}' '#{test_binary}' > coverage.lcov")
+output_path = File.join(Dir.pwd, "coverage.lcov")
+sh("xcrun llvm-cov export -format=lcov -instr-profile '#{profdata}' '#{test_binary}' > '#{output_path}'")
 end
