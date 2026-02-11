@@ -13,7 +13,6 @@ lane :ci_iOS do
       clean: true,
       scheme: "Tets-Proj-CI",
       sdk: "iphonesimulator",
-      destination: "platform=iOS Simulator,name=iPhone 17 Pro",
       code_coverage: true,
       result_bundle: true
   )
