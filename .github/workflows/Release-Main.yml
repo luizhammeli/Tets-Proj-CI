@@ -1,4 +1,4 @@
-name: Release
+name: Release-Main
 
 permissions:
   contents: write 
@@ -11,7 +11,7 @@ on:
     branches:
       - main
 jobs:
-  release:
+  release-main:
     if: |
       github.event.workflow_run.conclusion == 'success' &&
       github.event.workflow_run.head_branch == 'main'
