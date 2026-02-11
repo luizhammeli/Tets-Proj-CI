@@ -16,16 +16,21 @@ lane :ci_iOS do
       code_coverage: true,
       result_bundle: true
   )
-  
+
   derived_data = lane_context[SharedValues::SCAN_DERIVED_DATA_PATH]
   sh("ls -R #{derived_data}/Build/ProfileData || true")
+  sh("ls -R #{derived_data}/Build/Products || true")
   profdata = Dir["#{derived_data}/Build/ProfileData/*/*.profdata"].first
+  UI.user_error!("profdata not found") unless profdata
+
   test_bundle = Dir["#{derived_data}/Build/Products/Debug-iphonesimulator/*.xctest"].first
+  UI.user_error!("test bundle not found") unless test_bundle
+
   test_binary = File.join(
   test_bundle,
   File.basename(test_bundle, ".xctest")
 )
 
-sh("ls -lh '#{test_binary}'")
+UI.user_error!("test binary not found") unless File.exist?(test_binary)
 sh("xcrun llvm-cov export -format=lcov -instr-profile '#{profdata}' '#{test_binary}' > coverage.lcov")
 end
