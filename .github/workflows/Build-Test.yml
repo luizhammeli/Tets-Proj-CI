@@ -82,6 +82,20 @@ jobs:
           "https://sonarcloud.io/api/qualitygates/project_status?projectKey=luizhammeli_Tets-Proj-CI" \
           | jq -r '.projectStatus.status')
           echo "status=$STATUS" >> $GITHUB_OUTPUT
+      - name: Get Sonar Metrics
+        id: sonar_metrics
+        run: |
+          RESPONSE=$(curl -s -u ${{ secrets.SONAR_TOKEN }}: \
+          "https://sonarcloud.io/api/measures/component?component=luizhammeli_Tets-Proj-CI&metricKeys=coverage,bugs,vulnerabilities,code_smells")
+          COVERAGE=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="coverage") | .value')
+          BUGS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="bugs") | .value')
+          VULNS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="vulnerabilities") | .value')
+          SMELLS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="code_smells") | .value')
+
+          echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
+          echo "bugs=$BUGS" >> $GITHUB_OUTPUT
+          echo "vulnerabilities=$VULNS" >> $GITHUB_OUTPUT
+          echo "smells=$SMELLS" >> $GITHUB_OUTPUT
   
       - name: Comment PR with Sonar Summary
         if: github.event_name == 'pull_request'
@@ -90,11 +104,27 @@ jobs:
           script: |
             const status = "${{ steps.sonar.outputs.status }}";
             const emoji = status === "OK" ? "✅" : "❌";
+            const coverage = process.env.COVERAGE;
+            const bugs = process.env.BUGS;
+            const vulns = process.env.VULNS;
+            const smells = process.env.SMELLS;
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
+<<<<<<< Updated upstream
               body: `## 🔎 Sonar Analysis\nQuality Gate \n\nStatus: ${emoji} **${status}**`
             })
+=======
+              body: `
+              | Metric | Value |
+              |--------|-------|
+              | 📊 Coverage | ${coverage}% |
+              | 🐞 Bugs | ${bugs} |
+              | 🔐 Vulnerabilities | ${vulns} |
+              | 🧹 Code Smells | ${smells} |
+              `
+            })
               
+>>>>>>> Stashed changes
