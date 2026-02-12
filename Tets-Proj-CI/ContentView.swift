@@ -63,6 +63,10 @@ struct CarouselView: View {
     func test2() -> Int {
         return 2 + 1
     }
+
+    func test3() -> Int {
+        return 2 + 1
+    }
 }
 
 struct ContentView: View {
