@@ -18,6 +18,11 @@ struct CarouselView: View {
     let items: [CarouselItem]
     @State private var currentIndex = 0
 
+    init(items: [CarouselItem]) {
+        currentIndex = 1
+        self.items = items
+    }
+
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -49,6 +54,14 @@ struct CarouselView: View {
             .tabViewStyle(.page(indexDisplayMode: .automatic))
             .frame(height: 220)
         }
+    }
+
+    func test() -> Int {
+        return 2 + 1
+    }
+
+    func test2() -> Int {
+        return 2 + 1
     }
 }
 
