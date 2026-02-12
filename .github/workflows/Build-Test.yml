@@ -78,7 +78,7 @@ jobs:
       - name: Get Sonar Quality Gate
         id: sonar
         run: |
-          STATUS=$(curl -s -u ${{ secrets.SONAR_TOKEN }}: \ 
+          STATUS=$(curl -s -u "${{ secrets.SONAR_TOKEN }}:" \
           "https://sonarcloud.io/api/qualitygates/project_status?projectKey=luizhammeli_Tets-Proj-CI" \
           | jq -r '.projectStatus.status')
           echo "status=$STATUS" >> $GITHUB_OUTPUT
@@ -95,6 +95,6 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: "## 🔎 Sonar Analysis\nQuality Gate \n\nStatus: ${emoji} **${status}**"
+              body: `## 🔎 Sonar Analysis\nQuality Gate \n\nStatus: ${emoji} **${status}**`
             })
               
