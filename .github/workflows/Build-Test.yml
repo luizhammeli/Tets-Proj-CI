@@ -92,10 +92,10 @@ jobs:
           VULNS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="vulnerabilities") | .value')
           SMELLS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="code_smells") | .value')
 
-          echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
-          echo "bugs=$BUGS" >> $GITHUB_OUTPUT
-          echo "vulnerabilities=$VULNS" >> $GITHUB_OUTPUT
-          echo "smells=$SMELLS" >> $GITHUB_OUTPUT
+          echo "coverage=${COVERAGE: -0}" >> $GITHUB_OUTPUT
+          echo "bugs=${BUGS: -0}" >> $GITHUB_OUTPUT
+          echo "vulnerabilities=${VULNS: -0}" >> $GITHUB_OUTPUT
+          echo "smells=${SMELLS: -0}" >> $GITHUB_OUTPUT
   
       - name: Comment PR with Sonar Summary
         if: github.event_name == 'pull_request'
