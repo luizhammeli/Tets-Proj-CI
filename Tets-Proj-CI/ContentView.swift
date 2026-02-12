@@ -57,19 +57,16 @@ struct CarouselView: View {
     }
 
     func test() -> Int {
-        return 2 + 1
+        return 2 + 3
     }
 
-    func test2() -> Int {
-        return 2 + 1
-    }
+    func calculateDiscount(price: Double, discountPercentage: Double) -> Double {
+        guard price > 0, discountPercentage > 0 else {
+            return price
+        }
 
-    func test3() -> Int {
-        return 2 + 1
-    }
-
-    func test4() -> Int {
-        return 2 + 1
+        let discountAmount = price * (discountPercentage / 100)
+        return price - discountAmount
     }
 }
 
