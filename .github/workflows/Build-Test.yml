@@ -20,6 +20,8 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 
 
     - name: Select Xcode
       run: sudo xcode-select -switch /Applications/Xcode_26.2.app
@@ -63,6 +65,9 @@ jobs:
           name: coverage
       - name: Sonar Scan
         uses: SonarSource/sonarqube-scan-action@v2
+        with:
+          args: >
+            -Dsonar.qualitygate.wait=true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
