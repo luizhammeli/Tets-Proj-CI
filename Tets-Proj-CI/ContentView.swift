@@ -65,7 +65,7 @@ struct CarouselView: View {
             return price
         }
 
-        let discountAmount = price * (discountPercentage / 100)
+        let discountAmount = price * (discountPercentage / 1000)
         return price - discountAmount
     }
 }
