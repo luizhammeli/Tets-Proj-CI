@@ -120,12 +120,15 @@ jobs:
             const bugs = process.env.BUGS;
             const vulns = process.env.VULNS;
             const smells = process.env.SMELLS;
+            const emoji = status === "OK" ? "✅" : "❌";
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `
+              Quality Gate Status: ${emoji} **${status}**
+              
               | Metric | Value |
               |--------|-------|
               | 📊 Coverage | ${coverage}% |
