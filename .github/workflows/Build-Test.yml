@@ -111,10 +111,10 @@ jobs:
           script: |
             const status = "${{ steps.sonar.outputs.status }}";
             const emoji = status === "OK" ? "✅" : "❌";
-            const coverage = steps.sonar_metrics.outputs.coverage;
-            const bugs = steps.sonar_metrics.outputs.bugs;
-            const vulns = steps.sonar_metrics.outputs.vulnerabilities;
-            const smells = steps.sonar_metrics.outputs.smells;
+            const coverage = "${{ steps.sonar_metrics.outputs.coverage }}";
+            const bugs = "${{ steps.sonar_metrics.outputs.bugs }}";
+            const vulns = "${{ steps.sonar_metrics.outputs.vulnerabilities }}";
+            const smells = "${{ steps.sonar_metrics.outputs.smells }}";
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
