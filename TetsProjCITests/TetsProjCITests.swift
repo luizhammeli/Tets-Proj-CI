@@ -9,5 +9,8 @@ import XCTest
 @testable import Tets_Proj_CI
 
 final class TetsProjCITests: XCTestCase {
-    func tesExample() {}
+
+    func tesExample() {
+        // No tests for now
+    }
 }
