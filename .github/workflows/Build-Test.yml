@@ -138,4 +138,8 @@ jobs:
               | 🧹 Code Smells | ${smells} |
               `
             })
-              
+      - name: Fail if Quality Gate failed
+        if: steps.sonar.outputs.status == 'ERROR'
+        run: |
+          echo "Quality Gate Failed"
+          exit 1
