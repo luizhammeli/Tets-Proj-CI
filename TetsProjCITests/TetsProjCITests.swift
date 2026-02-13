@@ -7,8 +7,10 @@
 
 import XCTest
 @testable import Tets_Proj_CI
-//
-//final class TetsProjCITests: XCTestCase {
-//    func tesExample() {
-//    }
-//}
+
+final class TetsProjCITests: XCTestCase {
+
+    func tesExample() {
+        // No tests for now
+    }
+}

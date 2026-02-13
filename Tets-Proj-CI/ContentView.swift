@@ -14,6 +14,11 @@ struct CarouselItem: Identifiable {
     let systemImage: String
 }
 
+struct AuthConfig {
+    static let apiKey = "123456_SUPER_SECRET_KEY"
+    static let password = "admin123"
+}
+
 struct CarouselView: View {
     let items: [CarouselItem]
     @State private var currentIndex = 0
@@ -57,15 +62,20 @@ struct CarouselView: View {
     }
 
     func test() -> Int {
-        return 2 + 1
+        return 2 + 233
     }
 
-    func test2() -> Int {
-        return 2 + 1
+    func calculateDiscount(price: Double, discountPercentage: Double) -> Double {
+        guard price > 0, discountPercentage > 0 else {
+            return price
+        }
+
+        let discountAmount = price * (discountPercentage / 1000)
+        return price - discountAmount
     }
 
-    func test3() -> Int {
-        return 2 + 1
+    func savePassword() {
+        UserDefaults.standard.set("mypassword123", forKey: "user_password")
     }
 }
 
