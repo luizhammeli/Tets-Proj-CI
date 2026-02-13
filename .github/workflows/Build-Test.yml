@@ -107,14 +107,19 @@ jobs:
       - name: Comment PR with Sonar Summary
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
+        env:
+          SONAR_STATUS: ${{ steps.sonar.outputs.status }}
+          COVERAGE: ${{ steps.sonar_metrics.outputs.coverage }}
+          BUGS: ${{ steps.sonar_metrics.outputs.bugs }}
+          VULNS: ${{ steps.sonar_metrics.outputs.vulnerabilities }}
+          SMELLS: ${{ steps.sonar_metrics.outputs.smells }}
         with:
           script: |
-            const status = "${{ steps.sonar.outputs.status }}";
-            const emoji = status === "OK" ? "✅" : "❌";
-            const coverage = "${{ steps.sonar_metrics.outputs.coverage }}";
-            const bugs = "${{ steps.sonar_metrics.outputs.bugs }}";
-            const vulns = "${{ steps.sonar_metrics.outputs.vulnerabilities }}";
-            const smells = "${{ steps.sonar_metrics.outputs.smells }}";
+            const status = process.env.SONAR_STATUS;
+            const coverage = process.env.COVERAGE;
+            const bugs = process.env.BUGS;
+            const vulns = process.env.VULNS;
+            const smells = process.env.SMELLS;
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
