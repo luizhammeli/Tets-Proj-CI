@@ -104,7 +104,7 @@ jobs:
       #     echo "smells=${SMELLS: -0}" >> $GITHUB_OUTPUT
       - name: Extract failed conditions
         id: extract
-        if: steps.sonar.outputs.status == 'ERROR'
+        if: always() && steps.sonar.outputs.status == 'ERROR'
         run: |
           FAILED=$(jq -r '.projectStatus.conditions[] 
             | select(.status=="ERROR") 
@@ -154,7 +154,7 @@ jobs:
       #         `
       #       })
       - name: Fail if Quality Gate failed
-        if: steps.sonar.outputs.status == 'ERROR'
+        if: always() && steps.sonar.outputs.status == 'ERROR'
         run: |
           echo "Quality Gate Failed"
           exit 1
