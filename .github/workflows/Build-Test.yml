@@ -88,6 +88,7 @@ jobs:
           echo "$RESPONSE" > sonar.json
           STATUS=$(echo "$RESPONSE" | jq -r '.projectStatus.status')
           echo "status=$STATUS" >> $GITHUB_OUTPUT
+          echo "Quality Gate Status: $STATUS"
       # - name: Get Sonar Metrics
       #   id: sonar_metrics
       #   run: |
@@ -154,7 +155,7 @@ jobs:
       #         `
       #       })
       - name: Fail if Quality Gate failed
-        if: always() && steps.sonar.outputs.status == 'ERROR'
+        if: always() && steps.sonar.outputs.status == 'ERROR' 
         run: |
           echo "Quality Gate Failed"
           exit 1
