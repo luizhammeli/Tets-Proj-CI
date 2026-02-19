@@ -87,11 +87,7 @@ jobs:
           "https://sonarcloud.io/api/qualitygates/project_status?projectKey=luizhammeli_Tets-Proj-CI")
           echo "$RESPONSE" > sonar.json
           STATUS=$(echo "$RESPONSE" | jq -r '.projectStatus.status')
-          STATUS-OUT="${{ steps.check_quality_gate.outputs.quality-gate-status }}"
           echo "status=$STATUS" >> $GITHUB_OUTPUT
-          echo "Quality Gate Status: $STATUS"
-          echo "Quality Gate Status Output: $STATUS-OUT"
-          echo "Quality Gate Response: $RESPONSE"
       # - name: Get Sonar Metrics
       #   id: sonar_metrics
       #   run: |
@@ -108,7 +104,7 @@ jobs:
       #     echo "smells=${SMELLS: -0}" >> $GITHUB_OUTPUT
       - name: Extract failed conditions
         id: extract
-        if: always() && steps.sonar.outputs.status == 'ERROR'
+        if: always() && steps.check_quality_gate.outcome == 'failure'
         run: |
           FAILED=$(jq -r '.projectStatus.conditions[] 
             | select(.status=="ERROR") 
@@ -158,7 +154,7 @@ jobs:
       #         `
       #       })
       - name: Fail if Quality Gate failed
-        if: always() && steps.sonar.outputs.status == 'ERROR' 
+        if: always() && steps.check_quality_gate.outcome == 'failure'
         run: |
           echo "Quality Gate Failed"
           exit 1
