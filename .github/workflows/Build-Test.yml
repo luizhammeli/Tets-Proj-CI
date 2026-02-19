@@ -87,8 +87,11 @@ jobs:
           "https://sonarcloud.io/api/qualitygates/project_status?projectKey=luizhammeli_Tets-Proj-CI")
           echo "$RESPONSE" > sonar.json
           STATUS=$(echo "$RESPONSE" | jq -r '.projectStatus.status')
+          STATUS-OUT="${{ steps.check_quality_gate.outputs.quality-gate-status }}"
           echo "status=$STATUS" >> $GITHUB_OUTPUT
           echo "Quality Gate Status: $STATUS"
+          echo "Quality Gate Status Output: $STATUS-OUT"
+          echo "Quality Gate Response: $RESPONSE"
       # - name: Get Sonar Metrics
       #   id: sonar_metrics
       #   run: |
