@@ -160,7 +160,7 @@ jobs:
             const body = `
             ## ❌ SonarCloud Quality Gate FAILED
             As seguintes métricas falharam:
-            ${{ steps.extract.outputs.failed }} 
+            ${{ steps.extract.outputs.failed_conditions }} 
             ---
             🔎 Verifique o SonarCloud para mais detalhes.
             `
