@@ -6,12 +6,13 @@
 //
 
 import XCTest
+import SwiftUI
 @testable import Tets_Proj_CI
 
 final class CarouselViewtests: XCTestCase {
     func testExample() {
         _ = TetsProjCIApp()
-        let view = CarouselView(items: [])
+        let view = CarouselView(items: [.init(color: Color.red, title: "test", systemImage: "test")])
         _ = view.body
         XCTAssertEqual(view.test(), 4)
     }
