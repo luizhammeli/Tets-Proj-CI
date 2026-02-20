@@ -9,8 +9,10 @@ import XCTest
 @testable import Tets_Proj_CI
 
 final class TetsProjCITests: XCTestCase {
-
     func tesExample() {
-        // No tests for now
+        _ = TetsProjCIApp()
+        let view = CarouselView(items: [])
+        _ = view.body
+        XCTAssertEqual(view.test(), 4)
     }
 }

@@ -14,11 +14,6 @@ struct CarouselItem: Identifiable {
     let systemImage: String
 }
 
-struct AuthConfig {
-    static let apiKey = "123456_SUPER_SECRET_KEY"
-    static let password = "admin123"
-}
-
 struct CarouselView: View {
     let items: [CarouselItem]
     @State private var currentIndex = 0
@@ -62,46 +57,6 @@ struct CarouselView: View {
     }
 
     func test() -> Int {
-        return 2 + 233
+        return 2 + 2
     }
-
-    func calculateDiscount(price: Double, discountPercentage: Double) -> Double {
-        guard price > 0, discountPercentage > 0 else {
-            return price
-        }
-
-        let discountAmount = price * (discountPercentage / 1000)
-        return price - discountAmount
-    }
-
-    func savePassword() {
-        UserDefaults.standard.set("mypassword123", forKey: "user_password")
-    }
-}
-
-struct ContentView: View {
-    private let carouselItems = [
-        CarouselItem(color: .blue, title: "First", systemImage: "star.fill"),
-        CarouselItem(color: .green, title: "Second", systemImage: "leaf.fill"),
-        CarouselItem(color: .orange, title: "Third", systemImage: "bolt.fill"),
-        CarouselItem(color: .purple, title: "Fourth", systemImage: "heart.fill")
-    ]
-
-    var body: some View {
-        VStack(spacing: 20) {
-            CarouselView(items: carouselItems)
-            Spacer()
-            HStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world")
-            }
-        }
-        .padding()
-    }
-}
-
-#Preview {
-    ContentView()
 }
