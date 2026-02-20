@@ -88,20 +88,20 @@ jobs:
           echo "$RESPONSE" > sonar.json
           STATUS=$(echo "$RESPONSE" | jq -r '.projectStatus.status')
           echo "status=$STATUS" >> $GITHUB_OUTPUT
-      # - name: Get Sonar Metrics
-      #   id: sonar_metrics
-      #   run: |
-      #     RESPONSE=$(curl -s -u ${{ secrets.SONAR_TOKEN }}: \
-      #     "https://sonarcloud.io/api/measures/component?component=luizhammeli_Tets-Proj-CI&metricKeys=coverage,bugs,vulnerabilities,code_smells")
-      #     COVERAGE=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="coverage") | .value')
-      #     BUGS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="bugs") | .value')
-      #     VULNS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="vulnerabilities") | .value')
-      #     SMELLS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="code_smells") | .value')
+      - name: Get Sonar Metrics
+        id: sonar_metrics
+        run: |
+          RESPONSE=$(curl -s -u ${{ secrets.SONAR_TOKEN }}: \
+          "https://sonarcloud.io/api/measures/component?component=luizhammeli_Tets-Proj-CI&metricKeys=coverage,bugs,vulnerabilities,code_smells")
+          COVERAGE=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="coverage") | .value')
+          BUGS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="bugs") | .value')
+          VULNS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="vulnerabilities") | .value')
+          SMELLS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="code_smells") | .value')
 
-      #     echo "coverage=${COVERAGE: -0}" >> $GITHUB_OUTPUT
-      #     echo "bugs=${BUGS: -0}" >> $GITHUB_OUTPUT
-      #     echo "vulnerabilities=${VULNS: -0}" >> $GITHUB_OUTPUT
-      #     echo "smells=${SMELLS: -0}" >> $GITHUB_OUTPUT
+          echo "coverage=${COVERAGE: -0}" >> $GITHUB_OUTPUT
+          echo "bugs=${BUGS: -0}" >> $GITHUB_OUTPUT
+          echo "vulnerabilities=${VULNS: -0}" >> $GITHUB_OUTPUT
+          echo "smells=${SMELLS: -0}" >> $GITHUB_OUTPUT
       - name: Extract failed conditions
         id: extract
         if: always() && steps.check_quality_gate.outcome == 'failure'
@@ -119,39 +119,39 @@ jobs:
       #     echo "Smells: ${{ steps.sonar_metrics.outputs.smells }}"
       #     echo "Failed Conditions: ${{ steps.extract.outputs.failed_conditions }}"
 
-      # - name: Comment PR with Sonar Summary
-      #   if: github.event_name == 'pull_request' && steps.sonar.outcome == 'success'
-      #   uses: actions/github-script@v7
-      #   env:
-      #     SONAR_STATUS: ${{ steps.sonar.outputs.status }}
-      #     COVERAGE: ${{ steps.sonar_metrics.outputs.coverage }}
-      #     BUGS: ${{ steps.sonar_metrics.outputs.bugs }}
-      #     VULNS: ${{ steps.sonar_metrics.outputs.vulnerabilities }}
-      #     SMELLS: ${{ steps.sonar_metrics.outputs.smells }}
-      #   with:
-      #     script: |
-      #       const status = process.env.SONAR_STATUS;
-      #       const coverage = process.env.COVERAGE;
-      #       const bugs = process.env.BUGS;
-      #       const vulns = process.env.VULNS;
-      #       const smells = process.env.SMELLS;
-      #       const emoji = status === "OK" ? "✅" : "❌";
+      - name: Comment PR with Sonar Summary
+        if: github.event_name == 'pull_request' && steps.sonar.outcome == 'success'
+        uses: actions/github-script@v7
+        env:
+          SONAR_STATUS: ${{ steps.sonar.outputs.status }}
+          COVERAGE: ${{ steps.sonar_metrics.outputs.coverage }}
+          BUGS: ${{ steps.sonar_metrics.outputs.bugs }}
+          VULNS: ${{ steps.sonar_metrics.outputs.vulnerabilities }}
+          SMELLS: ${{ steps.sonar_metrics.outputs.smells }}
+        with:
+          script: |
+            const status = process.env.SONAR_STATUS;
+            const coverage = process.env.COVERAGE;
+            const bugs = process.env.BUGS;
+            const vulns = process.env.VULNS;
+            const smells = process.env.SMELLS;
+            const emoji = status === "OK" ? "✅" : "❌";
 
-      #       github.rest.issues.createComment({
-      #         issue_number: context.issue.number,
-      #         owner: context.repo.owner,
-      #         repo: context.repo.repo,
-      #         body: `
-      #         Quality Gate Status: ${emoji} **${status}**
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `
+              Quality Gate Status: ${emoji} **${status}**
               
-      #         | Metric | Value |
-      #         |--------|-------|
-      #         | 📊 Coverage | ${coverage}% |
-      #         | 🐞 Bugs | ${bugs} |
-      #         | 🔐 Vulnerabilities | ${vulns} |
-      #         | 🧹 Code Smells | ${smells} |
-      #         `
-      #       })
+              | Metric | Value |
+              |--------|-------|
+              | 📊 Coverage | ${coverage}% |
+              | 🐞 Bugs | ${bugs} |
+              | 🔐 Vulnerabilities | ${vulns} |
+              | 🧹 Code Smells | ${smells} |
+              `
+            })
       - name: Comment PR With Error Details
         if: steps.check_quality_gate.outcome == 'failure'
         uses: actions/github-script@v7
