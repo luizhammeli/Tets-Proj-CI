@@ -8,8 +8,8 @@
 import XCTest
 @testable import Tets_Proj_CI
 
-final class TetsProjCITests: XCTestCase {
-    func tesExample() {
+final class CarouselViewtests: XCTestCase {
+    func testExample() {
         _ = TetsProjCIApp()
         let view = CarouselView(items: [])
         _ = view.body
