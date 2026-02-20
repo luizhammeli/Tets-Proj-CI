@@ -9,7 +9,7 @@ import XCTest
 import SwiftUI
 @testable import Tets_Proj_CI
 
-final class CarouselViewtests: XCTestCase {
+final class CarouselViewTests: XCTestCase {
     func testExample() {
         _ = TetsProjCIApp()
         let view = CarouselView(items: [.init(color: Color.red, title: "test", systemImage: "test")])
