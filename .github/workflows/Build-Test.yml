@@ -107,7 +107,12 @@ jobs:
         if: always() && steps.check_quality_gate.outcome == 'failure'
         run: |
           FAILED=$(jq -r '.projectStatus.conditions[] 
-            | "- ❌ \(.metricKey): \(.actualValue) (mínimo \(.errorThreshold // "N/A"))"' sonar.json || true)
+            | select(
+                (.actualValue | tonumber?) 
+                and (.errorThreshold | tonumber?) 
+                and ((.actualValue | tonumber) < (.errorThreshold | tonumber))
+              )
+            | "- ❌ \(.metricKey): \(.actualValue) (minimum \(.errorThreshold))"
           echo "failed_conditions<<EOF" >> $GITHUB_OUTPUT
           echo "$FAILED" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
