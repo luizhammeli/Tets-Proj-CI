@@ -47,6 +47,7 @@ jobs:
 
     - name: Run Unit Tests
       run: bundle exec fastlane ci_iOS
+
     - name: Debug coverage file
       run: |
         echo "Listing fastlane directory:"
@@ -57,6 +58,7 @@ jobs:
         else
           echo "coverage.lcov not found"
         fi
+
     - name: Upload coverage
       uses: actions/upload-artifact@v4
       with:

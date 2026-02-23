@@ -11,9 +11,10 @@ import SwiftUI
 
 final class CarouselViewTests: XCTestCase {
     func testExample() {
-        _ = TetsProjCIApp()
-        let view = CarouselView(items: [.init(color: Color.red, title: "test", systemImage: "test")])
+        let app = TetsProjCIApp()
+        let view = CarouselView()
         _ = view.body
+        _ = app.body
         XCTAssertEqual(view.test(), 4)
     }
 }
