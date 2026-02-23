@@ -113,6 +113,7 @@ jobs:
                 and ((.actualValue | tonumber) < (.errorThreshold | tonumber))
               )
             | "- ❌ \(.metricKey): \(.actualValue) (minimum \(.errorThreshold))"
+          ' sonar.json || true)
           echo "failed_conditions<<EOF" >> $GITHUB_OUTPUT
           echo "$FAILED" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
