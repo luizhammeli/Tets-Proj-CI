@@ -48,6 +48,17 @@ jobs:
     - name: Run tests with coverage
       run: xcodebuild -scheme Tets-Proj-CI -sdk iphonesimulator -configuration Debug  -destination 'platform=iOS Simulator,OS=latest,name=iPhone 17 Pro' -enableCodeCoverage YES clean test
 
+    - name: Debug DerivedData structure
+      run: |
+        echo "==== DerivedData ===="
+        ls ~/Library/Developer/Xcode/DerivedData
+
+        echo "==== ProfileData ===="
+        find ~/Library/Developer/Xcode/DerivedData -name "*.profdata"
+
+        echo "==== Apps ===="
+        find ~/Library/Developer/Xcode/DerivedData -name "*.app"
+
     - name: Generate LCOV
       run: |
         DERIVED=$(ls -td ~/Library/Developer/Xcode/DerivedData/Tets-Proj-CI-* | head -1)
