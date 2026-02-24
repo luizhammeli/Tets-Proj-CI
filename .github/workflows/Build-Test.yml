@@ -71,14 +71,11 @@ jobs:
         echo "APP: $APP"
 
         APP_BINARY="$APP/$(basename "$APP" .app)"
-        TEST_BINARY="$TEST/$(basename "$TEST" .xctest)"
+        
+        TEST_BINARY="$APP/$(basename "$APP" .app).xctest"
+        echo "TEST_BINARY: $TEST_BINARY"
 
-        xcrun llvm-cov export \
-          -format=lcov \
-          -instr-profile "$PROF" \
-          -object "$APP_BINARY" \
-          -object "$TEST_BINARY" \
-          > coverage.lcov
+        xcrun llvm-cov export -format=lcov -instr-profile "$PROF" -object "$APP_BINARY" -object "$TEST_BINARY" > coverage.lcov
 
         echo "LCOV GENERATED"
         head -20 coverage.lcov
