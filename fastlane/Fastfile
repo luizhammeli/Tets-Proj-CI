@@ -14,7 +14,6 @@ lane :ci_iOS do
       scheme: "Tets-Proj-CI",
       sdk: "iphonesimulator",
       code_coverage: true,
-      output_types: "lcov",
       result_bundle: true
   )
 
@@ -25,15 +24,15 @@ lane :ci_iOS do
   profdata = Dir["#{derived_data}/Build/ProfileData/*/*.profdata"].first
   UI.user_error!("profdata not found") unless profdata
 
-  test_bundle = Dir["#{derived_data}/Build/Products/**/*.xctest"].first
-  UI.user_error!("test bundle not found") unless test_bundle
+ app_bundle = Dir["#{derived_data}/Build/Products/**/*.app"].first
+ UI.user_error!("app bundle not found") unless app_bundle
 
-  test_binary = File.join(
-  test_bundle,
-  File.basename(test_bundle, ".xctest")
+app_binary = File.join(
+  app_bundle,
+  File.basename(app_bundle, ".app")
 )
 
-UI.user_error!("test binary not found") unless File.exist?(test_binary)
+UI.user_error!("app binary not found") unless File.exist?(app_binary)
 output_path = File.join(Dir.pwd, "coverage.lcov")
-sh("xcrun llvm-cov export -format=lcov -instr-profile '#{profdata}' '#{test_binary}' > '#{output_path}'")
+sh("xcrun llvm-cov export -format=lcov -instr-profile '#{profdata}' '#{app_binary}' > '#{output_path}'")
 end
