@@ -19,6 +19,7 @@
 /* Begin PBXFileReference section */
 		259E17372F02B0AB0037FABB /* Tets-Proj-CI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tets-Proj-CI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		259E17442F02B0AC0037FABB /* Tets-Proj-CITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tets-Proj-CITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		25A0152A2F4DDC720088BC0D /* Tets-Proj-CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tets-Proj-CI.xctestplan"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -55,6 +56,7 @@
 		259E172E2F02B0AB0037FABB = {
 			isa = PBXGroup;
 			children = (
+				25A0152A2F4DDC720088BC0D /* Tets-Proj-CI.xctestplan */,
 				259E17392F02B0AB0037FABB /* Tets-Proj-CI */,
 				259E17472F02B0AC0037FABB /* Tets-Proj-CITests */,
 				259E17382F02B0AB0037FABB /* Products */,
