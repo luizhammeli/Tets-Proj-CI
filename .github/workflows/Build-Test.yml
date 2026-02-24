@@ -70,10 +70,14 @@ jobs:
         APP=$(find "$DERIVED/Build/Products/Debug-iphonesimulator" -name "*.app" | head -1)
         echo "APP: $APP"
 
+        APP_BINARY="$APP/$(basename "$APP" .app)"
+        TEST_BINARY="$TEST/$(basename "$TEST" .xctest)"
+
         xcrun llvm-cov export \
           -format=lcov \
           -instr-profile "$PROF" \
-          "$APP/$(basename "$APP" .app)" \
+          -object "$APP_BINARY" \
+          -object "$TEST_BINARY" \
           > coverage.lcov
 
         echo "LCOV GENERATED"
