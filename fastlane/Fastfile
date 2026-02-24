@@ -24,15 +24,23 @@ lane :ci_iOS do
   profdata = Dir["#{derived_data}/Build/ProfileData/*/*.profdata"].first
   UI.user_error!("profdata not found") unless profdata
 
- app_bundle = Dir["#{derived_data}/Build/Products/**/*.app"].first
- UI.user_error!("app bundle not found") unless app_bundle
+test_bundle = Dir["#{derived_data}/Build/Products/**/*.xctest"].first
+UI.user_error!("test bundle not found") unless test_bundle
 
-app_binary = File.join(
-  app_bundle,
-  File.basename(app_bundle, ".app")
+test_binary = File.join(
+  test_bundle,
+  File.basename(test_bundle, ".xctest")
 )
 
-UI.user_error!("app binary not found") unless File.exist?(app_binary)
+app_binary = Dir["#{derived_data}/Build/Products/**/*.app/*"].first
+UI.user_error!("app binary not found") unless app_binary
+
 output_path = File.join(Dir.pwd, "coverage.lcov")
-sh("xcrun llvm-cov export -format=lcov -instr-profile '#{profdata}' '#{app_binary}' > '#{output_path}'")
+
+sh("xcrun llvm-cov export \
+  -format=lcov \
+  -instr-profile '#{profdata}' \
+  -object '#{test_binary}' \
+  -object '#{app_binary}' \
+  > '#{output_path}'")
 end
