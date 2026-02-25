@@ -98,7 +98,7 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=luizhammeli_Tets-Proj-CI
-            -Dsonar.javascript.lcov.reportPaths=coverage.lcov
+            -Dsonar.swift.coverage.reportPaths=coverage.lcov
 
       - name: Check Quality Gate
         id: check_quality_gate
