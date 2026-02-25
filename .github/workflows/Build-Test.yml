@@ -63,129 +63,129 @@ jobs:
       run: | 
         cat coverage.lcov | head -20
 
-    # - name: Upload coverage
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: coverage
-    #     path: coverage.lcov
-    #     if-no-files-found: error
-  # run-sonar-scan:
-  #   runs-on: ubuntu-latest
-  #   needs: build-and-test
-  #   timeout-minutes: 10
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - name: Download coverage
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: coverage
-  #     - name: Sonar Scan
-  #       id: sonar_scan
-  #       uses: SonarSource/sonarqube-scan-action@v2
-  #       continue-on-error: true
-  #       env:
-  #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  #         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-  #     - name: Check Quality Gate
-  #       id: check_quality_gate
-  #       uses: SonarSource/sonarqube-quality-gate-action@v1
-  #       continue-on-error: true
-  #       timeout-minutes: 5
-  #       env:
-  #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  #         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-  #     - name: Get Sonar Quality Gate
-  #       if: always()
-  #       id: sonar
-  #       run: |
-  #         RESPONSE=$(curl -s -u "${{ secrets.SONAR_TOKEN }}:" \
-  #         "https://sonarcloud.io/api/qualitygates/project_status?projectKey=luizhammeli_Tets-Proj-CI")
-  #         echo "$RESPONSE" > sonar.json
-  #         STATUS=$(echo "$RESPONSE" | jq -r '.projectStatus.status')
-  #         echo "status=$STATUS" >> $GITHUB_OUTPUT
-  #     - name: Get Sonar Metrics
-  #       id: sonar_metrics
-  #       run: |
-  #         RESPONSE=$(curl -s -u ${{ secrets.SONAR_TOKEN }}: \
-  #         "https://sonarcloud.io/api/measures/component?component=luizhammeli_Tets-Proj-CI&metricKeys=coverage,bugs,vulnerabilities,code_smells")
-  #         COVERAGE=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="coverage") | .value')
-  #         BUGS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="bugs") | .value')
-  #         VULNS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="vulnerabilities") | .value')
-  #         SMELLS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="code_smells") | .value')
+    - name: Upload coverage
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage
+        path: coverage.lcov
+        if-no-files-found: error
+  run-sonar-scan:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download coverage
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage
+      - name: Sonar Scan
+        id: sonar_scan
+        uses: SonarSource/sonarqube-scan-action@v2
+        continue-on-error: true
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - name: Check Quality Gate
+        id: check_quality_gate
+        uses: SonarSource/sonarqube-quality-gate-action@v1
+        continue-on-error: true
+        timeout-minutes: 5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - name: Get Sonar Quality Gate
+        if: always()
+        id: sonar
+        run: |
+          RESPONSE=$(curl -s -u "${{ secrets.SONAR_TOKEN }}:" \
+          "https://sonarcloud.io/api/qualitygates/project_status?projectKey=luizhammeli_Tets-Proj-CI")
+          echo "$RESPONSE" > sonar.json
+          STATUS=$(echo "$RESPONSE" | jq -r '.projectStatus.status')
+          echo "status=$STATUS" >> $GITHUB_OUTPUT
+      # - name: Get Sonar Metrics
+      #   id: sonar_metrics
+      #   run: |
+      #     RESPONSE=$(curl -s -u ${{ secrets.SONAR_TOKEN }}: \
+      #     "https://sonarcloud.io/api/measures/component?component=luizhammeli_Tets-Proj-CI&metricKeys=coverage,bugs,vulnerabilities,code_smells")
+      #     COVERAGE=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="coverage") | .value')
+      #     BUGS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="bugs") | .value')
+      #     VULNS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="vulnerabilities") | .value')
+      #     SMELLS=$(echo $RESPONSE | jq -r '.component.measures[] | select(.metric=="code_smells") | .value')
 
-  #         echo "coverage=${COVERAGE: -0}" >> $GITHUB_OUTPUT
-  #         echo "bugs=${BUGS: -0}" >> $GITHUB_OUTPUT
-  #         echo "vulnerabilities=${VULNS: -0}" >> $GITHUB_OUTPUT
-  #         echo "smells=${SMELLS: -0}" >> $GITHUB_OUTPUT
-  #     - name: Extract failed conditions
-  #       id: extract
-  #       if: always() && steps.check_quality_gate.outcome == 'failure'
-  #       run: |
-  #         FAILED=$(jq -r '.projectStatus.conditions[] 
-  #           | select(
-  #               (.actualValue | tonumber?) 
-  #               and (.errorThreshold | tonumber?) 
-  #               and ((.actualValue | tonumber) < (.errorThreshold | tonumber))
-  #             )
-  #           | "- ❌ \(.metricKey): \(.actualValue) (minimum \(.errorThreshold))"
-  #         ' sonar.json || true)
-  #         echo "failed_conditions<<EOF" >> $GITHUB_OUTPUT
-  #         echo "$FAILED" >> $GITHUB_OUTPUT
-  #         echo "EOF" >> $GITHUB_OUTPUT
+      #     echo "coverage=${COVERAGE: -0}" >> $GITHUB_OUTPUT
+      #     echo "bugs=${BUGS: -0}" >> $GITHUB_OUTPUT
+      #     echo "vulnerabilities=${VULNS: -0}" >> $GITHUB_OUTPUT
+      #     echo "smells=${SMELLS: -0}" >> $GITHUB_OUTPUT
+      # - name: Extract failed conditions
+      #   id: extract
+      #   if: always() && steps.check_quality_gate.outcome == 'failure'
+      #   run: |
+      #     FAILED=$(jq -r '.projectStatus.conditions[] 
+      #       | select(
+      #           (.actualValue | tonumber?) 
+      #           and (.errorThreshold | tonumber?) 
+      #           and ((.actualValue | tonumber) < (.errorThreshold | tonumber))
+      #         )
+      #       | "- ❌ \(.metricKey): \(.actualValue) (minimum \(.errorThreshold))"
+      #     ' sonar.json || true)
+      #     echo "failed_conditions<<EOF" >> $GITHUB_OUTPUT
+      #     echo "$FAILED" >> $GITHUB_OUTPUT
+      #     echo "EOF" >> $GITHUB_OUTPUT
 
-  #     - name: Comment PR with Sonar Summary
-  #       if: github.event_name == 'pull_request' && steps.sonar.outcome == 'success'
-  #       uses: actions/github-script@v7
-  #       env:
-  #         SONAR_STATUS: ${{ steps.sonar.outputs.status }}
-  #         COVERAGE: ${{ steps.sonar_metrics.outputs.coverage }}
-  #         BUGS: ${{ steps.sonar_metrics.outputs.bugs }}
-  #         VULNS: ${{ steps.sonar_metrics.outputs.vulnerabilities }}
-  #         SMELLS: ${{ steps.sonar_metrics.outputs.smells }}
-  #       with:
-  #         script: |
-  #           const status = process.env.SONAR_STATUS;
-  #           const coverage = process.env.COVERAGE;
-  #           const bugs = process.env.BUGS;
-  #           const vulns = process.env.VULNS;
-  #           const smells = process.env.SMELLS;
-  #           const emoji = status === "OK" ? "✅" : "❌";
+      # - name: Comment PR with Sonar Summary
+      #   if: github.event_name == 'pull_request' && steps.sonar.outcome == 'success'
+      #   uses: actions/github-script@v7
+      #   env:
+      #     SONAR_STATUS: ${{ steps.sonar.outputs.status }}
+      #     COVERAGE: ${{ steps.sonar_metrics.outputs.coverage }}
+      #     BUGS: ${{ steps.sonar_metrics.outputs.bugs }}
+      #     VULNS: ${{ steps.sonar_metrics.outputs.vulnerabilities }}
+      #     SMELLS: ${{ steps.sonar_metrics.outputs.smells }}
+      #   with:
+      #     script: |
+      #       const status = process.env.SONAR_STATUS;
+      #       const coverage = process.env.COVERAGE;
+      #       const bugs = process.env.BUGS;
+      #       const vulns = process.env.VULNS;
+      #       const smells = process.env.SMELLS;
+      #       const emoji = status === "OK" ? "✅" : "❌";
 
-  #           github.rest.issues.createComment({
-  #             issue_number: context.issue.number,
-  #             owner: context.repo.owner,
-  #             repo: context.repo.repo,
-  #             body: `
-  #             Quality Gate Status: ${emoji} **${status}**
+      #       github.rest.issues.createComment({
+      #         issue_number: context.issue.number,
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         body: `
+      #         Quality Gate Status: ${emoji} **${status}**
               
-  #             | Metric | Value |
-  #             |--------|-------|
-  #             | 📊 Coverage | ${coverage}% |
-  #             | 🐞 Bugs | ${bugs} |
-  #             | 🔐 Vulnerabilities | ${vulns} |
-  #             | 🧹 Code Smells | ${smells} |
-  #             `
-  #           })
-  #     - name: Comment PR With Error Details
-  #       if: steps.check_quality_gate.outcome == 'failure'
-  #       uses: actions/github-script@v7
-  #       with:
-  #         script: |
-  #           const body = `
-  #           ## ❌ SonarCloud Quality Gate FAILED
-  #           As seguintes métricas falharam:
-  #           ${{ steps.extract.outputs.failed_conditions }} 
-  #           ---
-  #           🔎 Verifique o SonarCloud para mais detalhes.
-  #           `
-  #           github.rest.issues.createComment({
-  #             issue_number: context.issue.number,
-  #             owner: context.repo.owner,
-  #             repo: context.repo.repo,
-  #             body: body
-  #           })
-  #     - name: Fail if Quality Gate failed
-  #       if: always() && steps.check_quality_gate.outcome == 'failure'
-  #       run: |
-  #         echo "Quality Gate Failed"
-  #         exit 1
+      #         | Metric | Value |
+      #         |--------|-------|
+      #         | 📊 Coverage | ${coverage}% |
+      #         | 🐞 Bugs | ${bugs} |
+      #         | 🔐 Vulnerabilities | ${vulns} |
+      #         | 🧹 Code Smells | ${smells} |
+      #         `
+      #       })
+      # - name: Comment PR With Error Details
+      #   if: steps.check_quality_gate.outcome == 'failure'
+      #   uses: actions/github-script@v7
+      #   with:
+      #     script: |
+      #       const body = `
+      #       ## ❌ SonarCloud Quality Gate FAILED
+      #       As seguintes métricas falharam:
+      #       ${{ steps.extract.outputs.failed_conditions }} 
+      #       ---
+      #       🔎 Verifique o SonarCloud para mais detalhes.
+      #       `
+      #       github.rest.issues.createComment({
+      #         issue_number: context.issue.number,
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         body: body
+      #       })
+      # - name: Fail if Quality Gate failed
+      #   if: always() && steps.check_quality_gate.outcome == 'failure'
+      #   run: |
+      #     echo "Quality Gate Failed"
+      #     exit 1
