@@ -82,6 +82,8 @@ jobs:
         with:
           name: coverage
           path: .
+      - name: Debug coverage
+        run: cat coverage.lcov | head -20
 
       - name: Sonar Scan
         id: sonar_scan
