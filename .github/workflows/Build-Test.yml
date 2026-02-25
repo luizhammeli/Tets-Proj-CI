@@ -82,6 +82,7 @@ jobs:
         with:
           name: coverage
           path: .
+
       - name: Debug coverage
         run: cat coverage.lcov | head -20
 
@@ -89,12 +90,13 @@ jobs:
         id: sonar_scan
         uses: SonarSource/sonarqube-scan-action@v2
         continue-on-error: true
-        with: 
-          args: >
-            -Dsonar.javascript.lcov.reportPaths=coverage.lcov
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: >
+            -Dsonar.projectKey=luizhammeli_Tets-Proj-CI
+            -Dsonar.javascript.lcov.reportPaths=coverage.lcov
 
       - name: Check Quality Gate
         id: check_quality_gate
