@@ -97,7 +97,7 @@ jobs:
 
       - name: Sonar Scan
         id: sonar_scan
-        uses: SonarSource/sonarqube-scan-action@v2
+        uses: SonarSource/sonarcloud-github-action@v2
         continue-on-error: true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -106,6 +106,7 @@ jobs:
           args: >
             -X
             -Dsonar.sources=Tets-Proj-CI
+            -Dsonar.organization=luizhammeli
             -Dsonar.tests=Tets-Proj-CITests
             -Dsonar.projectKey=luizhammeli_Tets-Proj-CI
             -Dsonar.swift.coverage.reportPaths=coverage.lcov
