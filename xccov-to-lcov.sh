@@ -37,4 +37,3 @@ jq -r '
   ),
   "end_of_record"
 ' "$INPUT_JSON" >> "$OUTPUT_FILE"
-sed -i "" "s|/Users/runner/work/Tets-Proj-CI/Tets-Proj-CI/|/github/workspace/|g" "$OUTPUT_FILE"

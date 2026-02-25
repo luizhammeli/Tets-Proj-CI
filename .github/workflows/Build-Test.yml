@@ -48,26 +48,23 @@ jobs:
     - name: Run tests with coverage
       run: xcodebuild -scheme Tets-Proj-CI -sdk iphonesimulator -configuration Debug  -destination 'platform=iOS Simulator,OS=latest,name=iPhone 17 Pro' -enableCodeCoverage YES clean test
 
-    - name: Generate LCOV
+    - name: Generate JSON coverage report
       run: |
         DERIVED=$(ls -td ~/Library/Developer/Xcode/DerivedData/Tets-Proj-CI-* | head -1)
         echo "DerivedData: $DERIVED"
 
         xcrun xccov view --report --json $DERIVED/Logs/Test/Run-*.xcresult > coverage.json
-        chmod +x xccov-to-lcov.sh
-        ./xccov-to-lcov.sh coverage.json coverage.lcov
-
-        echo "LCOV GENERATED"
+        echo "JSON Coverage GENERATED"
 
     - name: Check Sonar File
       run: | 
-        cat coverage.lcov | head -20
+        cat coverage.json | head -20
 
     - name: Upload coverage
       uses: actions/upload-artifact@v4
       with:
         name: coverage
-        path: coverage.lcov
+        path: coverage.json
         if-no-files-found: error
 
   run-sonar-scan:
@@ -84,6 +81,13 @@ jobs:
         with:
           name: coverage
           path: .
+      
+      - name: Generate JSON coverage report
+        run: |
+          chmod +x xccov-to-lcov.sh
+          ./xccov-to-lcov.sh coverage.json coverage.lcov
+
+          echo "LCOV GENERATED"
 
       - name: Debug coverage
         run: cat coverage.lcov | head -20
