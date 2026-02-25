@@ -48,48 +48,26 @@ jobs:
     - name: Run tests with coverage
       run: xcodebuild -scheme Tets-Proj-CI -sdk iphonesimulator -configuration Debug  -destination 'platform=iOS Simulator,OS=latest,name=iPhone 17 Pro' -enableCodeCoverage YES clean test
 
-    - name: Debug DerivedData structure
-      run: |
-        echo "==== DerivedData ===="
-        ls ~/Library/Developer/Xcode/DerivedData
-
-        echo "==== ProfileData ===="
-        find ~/Library/Developer/Xcode/DerivedData -name "*.profdata"
-
-        echo "==== Apps ===="
-        find ~/Library/Developer/Xcode/DerivedData -name "*.app"
-
     - name: Generate LCOV
       run: |
         DERIVED=$(ls -td ~/Library/Developer/Xcode/DerivedData/Tets-Proj-CI-* | head -1)
         echo "DerivedData: $DERIVED"
 
-        PROF=$(find "$DERIVED" -name "*.profdata" | head -1)
-        echo "PROFDATA: $PROF"
-
-        APP=$(find "$DERIVED/Build/Products/Debug-iphonesimulator" -name "*.app" | head -1)
-        echo "APP: $APP"
-
-        APP_BINARY="$APP/$(basename "$APP" .app)"
-        
-        TEST_BINARY="$APP/$(basename "$APP" .app).xctest"
-        echo "TEST_BINARY: $TEST_BINARY"
-
-        xcrun llvm-cov export -format=lcov -instr-profile "$PROF" -object "$APP_BINARY" -object "$TEST_BINARY" > coverage.lcov
+        xcrun xccov view --report --json "$DERIVED/Logs/Test/Run-*.xcresult" > coverage.json
+        chmod +x xccov-to-lcov.sh
+        ./xccov-to-lcov.sh coverage.json coverage.lcov
 
         echo "LCOV GENERATED"
-        head -20 coverage.lcov
 
-    # - name: Check Sonar File
-    #   run: | 
-    #     ls -la fastlane
-    #     cat fastlane/coverage.lcov | head -20
+    - name: Check Sonar File
+      run: | 
+        cat coverage.lcov | head -20
 
     # - name: Upload coverage
     #   uses: actions/upload-artifact@v4
     #   with:
     #     name: coverage
-    #     path: fastlane/coverage.lcov
+    #     path: coverage.lcov
     #     if-no-files-found: error
   # run-sonar-scan:
   #   runs-on: ubuntu-latest

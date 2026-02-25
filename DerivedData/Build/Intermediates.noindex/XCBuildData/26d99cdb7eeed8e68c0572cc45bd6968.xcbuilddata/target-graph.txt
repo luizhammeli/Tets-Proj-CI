@@ -1,0 +1,4 @@
+Target dependency graph (2 targets)
+Target 'Tets-Proj-CITests' in project 'Tets-Proj-CI'
+➜ Explicit dependency on target 'Tets-Proj-CI' in project 'Tets-Proj-CI'
+Target 'Tets-Proj-CI' in project 'Tets-Proj-CI' (no dependencies)

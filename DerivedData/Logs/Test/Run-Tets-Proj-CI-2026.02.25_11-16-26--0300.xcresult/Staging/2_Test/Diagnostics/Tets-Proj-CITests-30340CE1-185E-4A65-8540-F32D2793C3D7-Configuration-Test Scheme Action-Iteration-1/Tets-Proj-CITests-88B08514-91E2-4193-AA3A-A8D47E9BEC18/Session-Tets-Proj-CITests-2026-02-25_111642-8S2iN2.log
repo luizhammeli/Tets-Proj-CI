@@ -1,0 +1,87 @@
+Xcode version: 26.2 (17C52)
+11:16:42.900 xcodebuild[20013:7715448] Beginning test session Tets-Proj-CITests-B8AE7B1B-B259-490D-ADF6-56C90A75D671 at 2026-02-25 11:16:42.899 on target <DVTiPhoneSimulator: 0xbda9ca080> {
+		SimDevice: Clone 1 of iPhone 17 Pro (CAD9E3CB-710A-4554-9F42-E04D74C35FB8, iOS 26.2, Shutdown)
+} (26.2 (23C54))
+11:16:42.900 xcodebuild[20013:7715448] 	/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild
+-scheme
+Tets-Proj-CI
+-sdk
+iphonesimulator
+-configuration
+Debug
+-destination
+platform=iOS Simulator,OS=latest,name=iPhone 17 Pro
+-enableCodeCoverage
+YES
+-derivedDataPath
+./DerivedData
+clean
+test
+11:16:42.900 xcodebuild[20013:7715448] Test standard output and standard error is at /Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Logs/Test/Run-Tets-Proj-CI-2026.02.25_11-16-26--0300.xcresult/Staging/2_Test/Diagnostics/Tets-Proj-CITests-30340CE1-185E-4A65-8540-F32D2793C3D7-Configuration-Test Scheme Action-Iteration-1/Tets-Proj-CITests-88B08514-91E2-4193-AA3A-A8D47E9BEC18/StandardOutputAndStandardError.txt
+11:16:43.099 xcodebuild[20013:7715448] CAD9E3CB-710A-4554-9F42-E04D74C35FB8: Received sim device notification: {
+    notification = "availableDevices_changed";
+}
+11:16:43.099 xcodebuild[20013:7715448] CAD9E3CB-710A-4554-9F42-E04D74C35FB8: Received sim device notification: {
+    device = "Clone 1 of iPhone 17 Pro (CAD9E3CB-710A-4554-9F42-E04D74C35FB8, iOS 26.2, Booting)";
+    "last_booted_at" = "2026-02-25 14:16:43 +0000";
+    "new_state" = 2;
+    notification = "device_state";
+    "prev_state" = 1;
+}
+11:16:43.099 xcodebuild[20013:7715448] /Users/luizdinizhammerli/Library/Developer/XCTestDevices: Received sim device set notification: {
+    device = "Clone 1 of iPhone 17 Pro (CAD9E3CB-710A-4554-9F42-E04D74C35FB8, iOS 26.2, Booting)";
+    "last_booted_at" = "2026-02-25 14:16:43 +0000";
+    "new_state" = 2;
+    notification = "device_state";
+    "prev_state" = 1;
+}
+11:16:43.276 xcodebuild[20013:7715448] CAD9E3CB-710A-4554-9F42-E04D74C35FB8: Received sim device notification: {
+    notification = "availableDevices_changed";
+}
+11:16:43.276 xcodebuild[20013:7715448] CAD9E3CB-710A-4554-9F42-E04D74C35FB8: Received sim device notification: {
+    device = "Clone 1 of iPhone 17 Pro (CAD9E3CB-710A-4554-9F42-E04D74C35FB8, iOS 26.2, Booted)";
+    "new_state" = 3;
+    notification = "device_state";
+    "prev_state" = 2;
+}
+11:16:43.276 xcodebuild[20013:7715484] 📱<DVTiPhoneSimulator (0xbda9ca080), Clone 1 of iPhone 17 Pro, unknown class, 26.2 (23C54), CAD9E3CB-710A-4554-9F42-E04D74C35FB8> claim LaunchSessionClaim_0xbda802280 on simulator was issued, 2 claims exist.
+11:16:43.276 xcodebuild[20013:7715448] /Users/luizdinizhammerli/Library/Developer/XCTestDevices: Received sim device set notification: {
+    device = "Clone 1 of iPhone 17 Pro (CAD9E3CB-710A-4554-9F42-E04D74C35FB8, iOS 26.2, Booted)";
+    "new_state" = 3;
+    notification = "device_state";
+    "prev_state" = 2;
+}
+11:16:43.276 xcodebuild[20013:7715448] Setting up test runner session
+11:16:43.276 xcodebuild[20013:7715449] Sim Clone 1 of iPhone 17 Pro: Unregistering for sim device notification with token 5
+11:16:43.277 xcodebuild[20013:7715449] Calling -[SimDevice getenv:error:] for TESTMANAGERD_SIM_SOCK
+11:16:43.277 xcodebuild[20013:7715448] Registering/updating daemon-based crash report observer for process names (
+    xctest,
+    debugserver,
+    FrontBoard,
+    assertiond,
+    runningboardd,
+    SpringBoard,
+    testmanagerd,
+    backboardd,
+    DTServiceHub,
+    "Tets-Proj-CI",
+    "Tets-Proj-CITests"
+)
+11:16:43.334 xcodebuild[20013:7715449] Sim Clone 1 of iPhone 17 Pro has testmanagerd socket at /private/tmp/com.apple.launchd.snw6IKwTag/com.apple.testmanagerd.unix-domain.socket
+11:16:43.334 xcodebuild[20013:7715449] Validating test connection socket path (/private/tmp/com.apple.launchd.snw6IKwTag/com.apple.testmanagerd.unix-domain.socket)
+11:16:43.334 xcodebuild[20013:7715449] Constructing transport for test connection socket
+11:16:43.335 xcodebuild[20013:7715449] Connected socket 37 to testmanagerd for Sim Clone 1 of iPhone 17 Pro
+11:16:43.335 xcodebuild[20013:7715449] Received connection for test runner session
+11:16:43.335 xcodebuild[20013:7715449] Listening for proxy connection request from the test bundle
+11:16:43.337 xcodebuild[20013:7715448] Test runner session acquired connection.
+11:16:43.337 xcodebuild[20013:7715449] Initiating session with identifier: B8AE7B1B-B259-490D-ADF6-56C90A75D671
+11:16:45.199 xcodebuild[20013:7715448] Finished requesting crash reports. Continuing with testing.
+11:16:45.201 xcodebuild[20013:7715449] Got reply to session initiation request with identifier B8AE7B1B-B259-490D-ADF6-56C90A75D671 (error: (null))
+11:16:45.209 xcodebuild[20013:7715448] Launch session started.
+11:16:45.226 xcodebuild[20013:7715479] 📱<DVTiPhoneSimulator (0xbda9ca080), Clone 1 of iPhone 17 Pro, unknown class, 26.2 (23C54), CAD9E3CB-710A-4554-9F42-E04D74C35FB8> claim LaunchSessionClaim_0xbda802280 on simulator was issued, 2 claims exist.
+11:16:45.235 xcodebuild[20013:7715482] 📱<DVTiPhoneSimulator (0xbda9ca080), Clone 1 of iPhone 17 Pro, unknown class, 26.2 (23C54), CAD9E3CB-710A-4554-9F42-E04D74C35FB8> claim LaunchSessionClaim_0xbda802280 on simulator was issued, 2 claims exist.
+11:16:45.235 xcodebuild[20013:7715482] CAD9E3CB-710A-4554-9F42-E04D74C35FB8: Registered for sim device notification, got token 8
+11:16:45.236 xcodebuild[20013:7715484] CAD9E3CB-710A-4554-9F42-E04D74C35FB8: Unregistering for sim device notification with token 8
+11:16:45.239 xcodebuild[20013:7717099] CAD9E3CB-710A-4554-9F42-E04D74C35FB8: Installing app at path: /Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Products/Debug-iphonesimulator/Tets-Proj-CI.app and options: {
+    SkipWatchAppInstall = 1;
+}

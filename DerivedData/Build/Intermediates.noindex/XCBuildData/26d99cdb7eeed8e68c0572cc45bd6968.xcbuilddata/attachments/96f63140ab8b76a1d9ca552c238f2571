@@ -1,0 +1,39 @@
+{
+  "" : {
+    "diagnostics" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/Tets-Proj-CI-primary.dia",
+    "emit-module-dependencies" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/Tets-Proj-CI-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/Tets-Proj-CI-primary-emit-module.dia",
+    "pch" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/Tets-Proj-CI-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/Tets-Proj-CI-primary.swiftdeps"
+  },
+  "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/Tets-Proj-CI/CarouselView.swift" : {
+    "const-values" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/CarouselView.swiftconstvalues",
+    "dependencies" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/CarouselView.d",
+    "diagnostics" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/CarouselView.dia",
+    "index-unit-output-path" : "/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/CarouselView.o",
+    "llvm-bc" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/CarouselView.bc",
+    "object" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/CarouselView.o",
+    "swift-dependencies" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/CarouselView.swiftdeps",
+    "swiftmodule" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/CarouselView~partial.swiftmodule"
+  },
+  "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/Tets-Proj-CI/TetsProjCIApp.swift" : {
+    "const-values" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/TetsProjCIApp.swiftconstvalues",
+    "dependencies" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/TetsProjCIApp.d",
+    "diagnostics" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/TetsProjCIApp.dia",
+    "index-unit-output-path" : "/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/TetsProjCIApp.o",
+    "llvm-bc" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/TetsProjCIApp.bc",
+    "object" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/TetsProjCIApp.o",
+    "swift-dependencies" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/TetsProjCIApp.swiftdeps",
+    "swiftmodule" : "/Users/luizdinizhammerli/Documents/GitHub/Tets-Proj-CI/DerivedData/Build/Intermediates.noindex/Tets-Proj-CI.build/Debug-iphonesimulator/Tets-Proj-CI.build/Objects-normal/arm64/TetsProjCIApp~partial.swiftmodule"
+  }
+}
