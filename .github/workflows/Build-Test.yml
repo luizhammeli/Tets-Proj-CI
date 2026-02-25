@@ -53,7 +53,7 @@ jobs:
         DERIVED=$(ls -td ~/Library/Developer/Xcode/DerivedData/Tets-Proj-CI-* | head -1)
         echo "DerivedData: $DERIVED"
 
-        xcrun xccov view --report --json "$DERIVED/Logs/Test/Run-*.xcresult" > coverage.json
+        xcrun xccov view --report --json $DERIVED/Logs/Test/Run-*.xcresult > coverage.json
         chmod +x xccov-to-lcov.sh
         ./xccov-to-lcov.sh coverage.json coverage.lcov
 
