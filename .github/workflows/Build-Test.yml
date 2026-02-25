@@ -97,6 +97,7 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: >
+            -X
             -Dsonar.projectKey=luizhammeli_Tets-Proj-CI
             -Dsonar.swift.coverage.reportPaths=coverage.lcov
 
