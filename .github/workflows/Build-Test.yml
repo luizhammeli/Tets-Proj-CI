@@ -87,6 +87,13 @@ jobs:
 
       - name: Debug coverage
         run: cat coverage.lcov | head -20
+      
+      - name: Confirm workspace
+        run: |
+          echo "PWD:"
+          pwd
+          echo "Files:"
+          ls -la
 
       - name: Sonar Scan
         id: sonar_scan
@@ -98,6 +105,8 @@ jobs:
         with:
           args: >
             -X
+            -Dsonar.sources=Tets-Proj-CI
+            -Dsonar.tests=Tets-Proj-CITests
             -Dsonar.projectKey=luizhammeli_Tets-Proj-CI
             -Dsonar.swift.coverage.reportPaths=coverage.lcov
 
