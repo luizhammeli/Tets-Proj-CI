@@ -1,0 +1,47 @@
+{
+  "configurations" : [
+    {
+      "id" : "FF6BB8A8-FB54-4D24-8F26-479488CDD144",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:Tets-Proj-CI.xcodeproj",
+          "identifier" : "259E17362F02B0AB0037FABB",
+          "name" : "Tets-Proj-CI"
+        }
+      ]
+    },
+    "performanceAntipatternCheckerEnabled" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Tets-Proj-CI.xcodeproj",
+      "identifier" : "259E17362F02B0AB0037FABB",
+      "name" : "Tets-Proj-CI"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Tets-Proj-CI.xcodeproj",
+        "identifier" : "259E17432F02B0AC0037FABB",
+        "name" : "Tets-Proj-CITests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Tets-Proj-CI.xcodeproj",
+        "identifier" : "259E174D2F02B0AC0037FABB",
+        "name" : "Tets-Proj-CIUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

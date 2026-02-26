@@ -11,7 +11,7 @@ import SwiftUI
 struct TetsProjCIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CarouselView()
         }
     }
 }
