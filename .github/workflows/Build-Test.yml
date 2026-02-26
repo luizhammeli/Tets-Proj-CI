@@ -99,6 +99,8 @@ jobs:
         id: sonar_scan
         uses: SonarSource/sonarcloud-github-action@v2
         continue-on-error: true
+        with:
+          args: -X
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
